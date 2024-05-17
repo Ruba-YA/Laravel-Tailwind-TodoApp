@@ -7,11 +7,14 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-       <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel= "stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel= "stylesheet"/>
                 <!-- Styles -->
-
+                <style>
+                    body {
+                        font-family: 'Nunito', sans-serif;
+                    }
+                </style>
     </head>
     <body class="bg-gray-200 p-4" >
     <div class="lg:w-2/4 mx-auto py-8 px-6 bg-white rounded-xl">
