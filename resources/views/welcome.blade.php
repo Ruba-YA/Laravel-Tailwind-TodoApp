@@ -23,6 +23,7 @@
         <h1 class="font-bold text-5xl text-center mb-8"> Laravel Tailwind Todo</h1>
         <div class="mb-6">
             <form class="flex flex-col space-y-4 " method="POST" action="/">
+                @csrf
                 <input name="title" placeholder="add todo title" type="text" class="py-3 px-4 bg-gray-100 rounded-xl">
                 <textarea name="description" placeholder="todo description" class="py-3 px-4 bg-gray-100 rounded-xl"></textarea>
                 <button class="w-28 py-4 px-8 bg-green-500 text-white rounded-xl">Submit</button>
@@ -30,17 +31,31 @@
         </div>
         <hr>
         <div class="mt-2">
-            <div class="py-4 flex item-center border-b border-gray-300 px-3">
+            @foreach ($todos as $todo)
+
+
+            <div
+            @class([
+                'py-4 flex item-center border-b border-gray-300 px-3',
+                $todo->isDone ? 'bg-green-200' : ''
+
+                ])>
                 <div class="flex-1 pr-8">
-                    <h3 class="text-lg font-semibold"> Title</h3>
-                    <p class="text-gray-500">Description</p>
+                    <h3 class="text-lg font-semibold"> {{ $todo->title }}</h3>
+                    <p class="text-gray-500">{{ $todo->description }}</p>
                 </div>
                 <div class="flex space-x-3">
+                    <form action="/{{ $todo->id }}" method="POST">
+                        @method('PATCH')
+                        @csrf
                     <button class="py-2 px-3 bg-green-500 text-white rounded-xl"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                       </svg>
                       </button>
-
+                    </form>
+<form action="/{{ $todo->id }}" method="POST">
+    @csrf
+    @method('DELETE')
                       <button class="py-2 px-3 bg-red-500 text-white rounded-xl">
 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -48,9 +63,13 @@
                           </svg>
 
                       </button>
+
+                    </form>
                 </div>
             </div>
         </div>
+        @endforeach
+
     </div>
 </body>
 
