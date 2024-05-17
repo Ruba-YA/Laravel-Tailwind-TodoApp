@@ -13,6 +13,9 @@
                 <!-- Styles -->
 
     </head>
-    <body >
+    <body class="bg-gray-200 p-4" >
+    <div class="lg:w-2/4 mx-auto py-8 px-6 bg-white rounded-xl">
+    <h1 class="font-bold text-5xl text-center mb-8"> Laravel Tailwind Todo</h1>
+    </div>
     </body>
 </html>
